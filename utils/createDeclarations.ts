@@ -5,7 +5,6 @@ import { createFileContent } from "./createFileContent";
 import { toFirstLowerCase } from './toFirstLowerCase';
 
 const createDeclarations = (schemaVersion: string, item: TreeNode, parentPath: string) => {
-
     const dir = `${parentPath}/${item.ifcClassName}/`;
     fs.mkdirSync(dir, { recursive: true });
 

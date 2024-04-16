@@ -35,14 +35,17 @@ const createIfc4x3 = async (page: Page, dirname: string) => {
         return getChildren(rootItem);
     });
 
-    const root = findRoot(children);
+    // const root = findRoot(children);
 
-    if (root === undefined) {
-        throw new Error("Root not found");
+    // if (root === undefined) {
+    //     throw new Error("Root not found");
+    // }
+
+    for (const child of children) {
+        createDeclarations(schemaVersion, child, `${dirname}/${schemaVersion}`);
     }
 
-    createDeclarations(schemaVersion, root, `${dirname}/${schemaVersion}`);
-    createExportsBarrel(root, `${dirname}/${schemaVersion}/index.ts`);
+    createExportsBarrel(children, `${dirname}/${schemaVersion}/index.ts`);
 };
 
 export { createIfc4x3 };
